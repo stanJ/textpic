@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文字转图片</title>
+  <style>
+    .input-wrapper {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    textarea[name=content] {
+      margin: 0 auto;
+    }
+
+    .btn-wrapper {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      width: 100px;
+      line-height: 2;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn.first {
+      margin-right: 10px
+    }
+    .preview-wrapper {
+      margin-top: 40px;
+    }
+    .preview {
+      width: 375px;
+      margin: 0 auto;
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      min-height: 50px;
+      padding: 20px 10px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="input-wrapper">
+      <textarea name="content" id="input" cols="80" rows="22" v-model="content" placeholder="请输入文字"></textarea>
+    </div>
+    <div class="btn-wrapper">
+      <select name="font-family" v-model="fontFamily">
+        <option value="">请选择字体</option>
+        <option :value="font.en" v-for="font in fonts">{{font.ch}}</option>
+      </select>
+      <select name="font-size" v-model="fontSize">
+        <option value="12">12px</option>
+        <option value="13">13px</option>
+        <option value="14">14px</option>
+        <option value="15">15px</option>
+        <option value="16">16px</option>
+        <option value="17">17px</option>
+        <option value="18">18px</option>
+      </select>
+      <button class="btn" name="download" type="button" @click="downloadImg">下载图片</button>
+    </div>
+    <div class="preview-wrapper">
+      <div class="preview" v-text="content" :style="{'font-size': fontSize + 'px', 'font-family': fontFamily}"></div>
+    </div>
+  </div>
+  <script src="lib/font-ch-en.js"></script>
+  <script src="lib/support-font.js"></script>
+  <script src="lib/svgtoimg.js"></script>
+  <script src="lib/vue.js"></script>
+  <script src="js/index.js"></script>
+  <script>
+
+
+  </script>
+</body>
+
+</html>
